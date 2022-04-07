@@ -1,0 +1,49 @@
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+	<!--上面配置的属性都是默认的-->
+
+	<!--有零个或多个<appender>元素，有零个或多个<logger>元素，有最多一个<root>元素-->
+
+	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+	<property name="LOG_HOME" value="/log_home" /><!--系统目录下创建-->
+
+	<!--控制台打印-->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+	<!--输出日志到文件-->
+	<!--<appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
+	<!--	<file>${LOG_HOME}/template.log</file>-->
+	<!--	<append>true</append>&lt;!&ndash;追加到文件尾部，否则覆盖&ndash;&gt;-->
+	<!--	<encoder>-->
+	<!--		<Pattern>-->
+	<!--			%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n-->
+	<!--		</Pattern>-->
+	<!--	</encoder>-->
+	<!--</appender>-->
+	<!--带上时间戳的日志文件-->
+<!--　　　<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--					&lt;!&ndash;滚动策略&ndash;&gt;-->
+<!--　　　　　　<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--　　　　　　　　　<fileNamePattern>${LOG_HOME}/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>&lt;!&ndash;每天记录一次日志&ndash;&gt;-->
+<!--　　　　　　　　　<maxHistory>30</maxHistory>&lt;!&ndash;保存30天，与更新间隔有关&ndash;&gt;-->
+<!--　　　　　　</rollingPolicy>-->
+<!--　　　　　　<encoder>-->
+<!--　　　　　　　　　<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>-->
+<!--　　　　　　</encoder>-->
+<!--　　　</appender>-->
+
+
+	<!--使用topic-->
+	<logger name="s" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/><!--添加一个appender进来-->
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="STDOUT"/>
+	</root>
+
+</configuration>
