@@ -3,17 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!--注解开发最小xml配置-->
-
-    <!--声明出错跳转路径-->
-    <!--<error-page>-->
-        <!--<location>/error</location>-->
-    <!--</error-page>-->
-
-
-
-    <!--注解开发最小xml配置-->
-
     <!--&lt;!&ndash;解决乱码的过滤器&ndash;&gt;-->
     <!--<filter>-->
     <!--    <filter-name>CharacterEncodingFilter</filter-name>-->

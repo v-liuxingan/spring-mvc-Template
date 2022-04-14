@@ -87,7 +87,7 @@
     <div class="ui text  container">
         <div class="message show ">
             <h5 class="ui top attached header">
-                源码阅读无敌通卡交流群(<span id="onlineCount"></span>)
+                交流群(<span id="onlineCount"></span>)
             </h5>
             <div class="ui list">
 

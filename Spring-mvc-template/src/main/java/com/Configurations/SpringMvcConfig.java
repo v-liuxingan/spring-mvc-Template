@@ -8,12 +8,10 @@ import org.springframework.http.CacheControl;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.util.UrlPathHelper;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -160,6 +158,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
 //        registry.addResourceHandler("doc.html","/swagger-ui.html")
 //                .addResourceLocations("classpath:/META-INF/resources/");
     }
+    //----------------------------------------------------------------------------------------
 
     /**
      * 全局资源访问
@@ -167,5 +166,30 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    /**
+     * 开启全局跨域支持
+     * 若单独在类或者方法上添加注解 @CrossOrigin
+     * 则只能开启该类或方法的跨域支持
+    * */
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")
+                .allowedMethods("GET","POST","DELETE","HEAD","OPTIONS")
+                .allowedHeaders("*")
+                .maxAge(3600);//最大不询问时限
+    }
+
+    /**
+     * 允许使用@MatrixVariable注解，用法类似@PathVariable
+     * 开启矩阵变量支持
+     */
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        UrlPathHelper urlPathHelper = new UrlPathHelper();
+        urlPathHelper.setRemoveSemicolonContent(false);
+        configurer.setUrlPathHelper(urlPathHelper);
     }
 }

@@ -22,7 +22,7 @@
                 </configuration>
             </plugin>
 
-     <!--tomcat插件部署（启动部分项目会一直报错，建议使用本地tomcat）-->
+     <!--#### tomcat插件部署（启动部分项目会一直报错，建议使用本地tomcat）####-->
             <!--
             <plugin>
                 <groupId>org.opoo.maven</groupId>

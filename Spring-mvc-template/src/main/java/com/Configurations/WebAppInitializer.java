@@ -7,6 +7,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 /**
  * 取代web.xml的配置
@@ -47,7 +48,6 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     /**
      * 注册过滤器---指定编码
-     *
      */
     @Override
     protected Filter[] getServletFilters() {

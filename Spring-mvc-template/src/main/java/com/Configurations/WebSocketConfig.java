@@ -24,6 +24,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
         registry.addHandler(mySocketHandler(),"/websocket");
     }
 
+    //将WebSocketHandler处理类手动注入进来
     @Bean
     public WebSocketHandler mySocketHandler() {
         return new MySocketHandle();
